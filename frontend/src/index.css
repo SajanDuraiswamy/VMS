@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 @import "tailwindcss";
+=======
+@import "tailwindcss";
+
+/* Print styling: only show e-pass when printing */
+@media print {
+	body * { visibility: hidden; }
+	.printable-epass, .printable-epass * { visibility: visible; }
+	.printable-epass { position: absolute; left: 0; top: 0; width: 100%; }
+}
+>>>>>>> d205e47 (Remove node_modules and add to gitignore)

@@ -4,13 +4,24 @@ const QRCode = require("qrcode");
 const PDFDocument = require("pdfkit");
 const { v4: uuidv4 } = require("uuid");
 
+<<<<<<< HEAD
 async function generateEpass(visitor) {
+=======
+async function generateEpass(visitor, link) {
+>>>>>>> d205e47 (Remove node_modules and add to gitignore)
   const epassId = uuidv4();
   const qrPath = path.join(__dirname, `../tmp/${epassId}.png`);
   const pdfPath = path.join(__dirname, `../tmp/${epassId}.pdf`);
 
+<<<<<<< HEAD
   // Generate QR
   await QRCode.toFile(qrPath, `Epass ID: ${epassId}, Visitor: ${visitor.name}`);
+=======
+  // Generate QR with link (if link provided) or use default link to frontend epass page
+  const base = link || process.env.FRONTEND_URL || `http://localhost:5173`;
+  const frontendLink = `${base.replace(/\/$/, "")}/epass/${epassId}`;
+  await QRCode.toFile(qrPath, frontendLink);
+>>>>>>> d205e47 (Remove node_modules and add to gitignore)
 
   // Generate PDF
   const doc = new PDFDocument();
